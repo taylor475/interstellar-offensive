@@ -4,13 +4,17 @@ class Object {
     #mvmt
     #hp
     #dir
+    #x
+    #y
 
-    constructor(length, width, movement, health, direction) {
+    constructor(length, width, movement, health, direction, x_coord, y_coord) {
         this.#len = length
         this.#wid = width
         this.#mvmt = movement
         this.#hp = health
         this.#dir = direction
+        this.#x = x_coord
+        this.#y = y_coord
     }
 
     getLength() {
@@ -43,6 +47,14 @@ class Object {
 
     setDirection(direction) {
         this.#dir = direction
+    }
+
+    getX () {
+        return this.#x
+    }
+
+    getY() {
+        return this.#y
     }
 }
 

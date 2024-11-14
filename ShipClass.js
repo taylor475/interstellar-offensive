@@ -6,8 +6,8 @@ class Ship extends Object {
     #range
     #cost
     
-    constructor(length, width, attack, defense, range, movement, health, direction, cost) {
-        super(length, width, movement, health, direction)
+    constructor(length, width, attack, defense, range, movement, health, direction, x_coord, y_coord, cost) {
+        super(length, width, movement, health, direction, x_coord, y_coord)
         this.#atk = attack
         this.#def = defense
         this.#range = range
