@@ -60,6 +60,19 @@ class Ship extends Object {
     setPlayer(player) {
         this.#play = player
     }
+
+    // Finds the distance between the ship's location and a given point
+    findDistance(ship, pt_x, pt_y) {
+        let ship_x = ship.getX()
+        let ship_y = ship.getY()
+
+        let dist_x = Math.abs(ship_x - pt_x)
+        let dist_y = Math.abs(ship_y - pt_y)
+
+        let tot_dist = Math.sqrt(dist_x ^ 2 + dist_y ^ 2)
+
+        return tot_dist
+    }
 }
 
 export default Ship
