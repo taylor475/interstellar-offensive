@@ -4,16 +4,18 @@ class Object {
     #wid
     #mvmt
     #hp
+    #max_hp
     #dir
     #x
     #y
 
-    constructor(type, length, width, movement, health, direction, x_coord, y_coord) {
+    constructor(type, length, width, movement, health, max_health, direction, x_coord, y_coord) {
         this.#type = type
         this.#len = length
         this.#wid = width
         this.#mvmt = movement
         this.#hp = health
+        this.#max_hp = max_health
         this.#dir = direction
         this.#x = x_coord
         this.#y = y_coord
@@ -52,6 +54,11 @@ class Object {
     // Setter method for hp attribute
     setHealth(health) {
         this.#hp = health
+    }
+
+    // Getter method for max_hp attribute
+    getMaxHealth() {
+        return this.#max_hp
     }
 
     // Getter method for dir attribute
