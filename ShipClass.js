@@ -31,6 +31,13 @@ class Ship extends Object {
         }
     }
 
+    takeDamage(damage) {
+        let current_health = this.getHealth()
+
+        this.setHealth(current_health - damage)
+        // TODO: Add logic for a dead ship
+    }
+
     // Finds the distance between the ship's location and a given point
     findDistance(pt_x, pt_y) {
         let ship_x = this.getX()
