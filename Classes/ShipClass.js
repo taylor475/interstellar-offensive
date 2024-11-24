@@ -7,13 +7,48 @@ class Ship extends Object {
     #cost
     #play
     
-    constructor(type, length, width, attack, defense, range, movement, health, direction, x_coord, y_coord, cost, player) {
-        super(type, length, width, movement, health, direction, x_coord, y_coord)
+    constructor(type, length, width, attack, defense, range, movement, health, max_health, direction, x_coord, y_coord, cost, player) {
+        super(type, length, width, movement, health, max_health, direction, x_coord, y_coord)
         this.#atk = attack
         this.#def = defense
         this.#range = range
         this.#cost = cost
         this.#play = player
+    }
+
+    // Attacks enemy ship
+    attackShip(enemy) {
+        // TODO: Add check to make sure the other ship is an enemy ship and not your own
+        // Find distance between ship and enemy
+        let dist = this.findDistance(enemy.getX(), enemy.getY())
+
+        // Begin attack sequence if enemy is in range
+        if (dist <= this.range) {
+            if (this.#atk > enemy.getDefense()) {
+                let damage = enemy.getDefense() - this.#atk
+                enemy.takeDamage(damage)
+            }
+        }
+    }
+
+    takeDamage(damage) {
+        let current_health = this.getHealth()
+
+        this.setHealth(current_health - damage)
+        // TODO: Add logic for a dead ship
+    }
+
+    // Finds the distance between the ship's location and a given point
+    findDistance(pt_x, pt_y) {
+        let ship_x = this.getX()
+        let ship_y = this.getY()
+
+        let dist_x = Math.abs(ship_x - pt_x)
+        let dist_y = Math.abs(ship_y - pt_y)
+
+        let tot_dist = Math.sqrt(dist_x ^ 2 + dist_y ^ 2)
+
+        return tot_dist
     }
 
     // Getter method for the atk attribute
@@ -59,19 +94,6 @@ class Ship extends Object {
     // Setter method for the play attribute
     setPlayer(player) {
         this.#play = player
-    }
-
-    // Finds the distance between the ship's location and a given point
-    findDistance(ship, pt_x, pt_y) {
-        let ship_x = ship.getX()
-        let ship_y = ship.getY()
-
-        let dist_x = Math.abs(ship_x - pt_x)
-        let dist_y = Math.abs(ship_y - pt_y)
-
-        let tot_dist = Math.sqrt(dist_x ^ 2 + dist_y ^ 2)
-
-        return tot_dist
     }
 }
 
