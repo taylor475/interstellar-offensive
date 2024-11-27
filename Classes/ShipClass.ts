@@ -4,14 +4,16 @@ class Ship extends Object {
     private atk: number
     private def: number
     private range: number
+    private bonus: number[]
     private cost: number
     private play: number
     
-    constructor(type: string, length: number, width: number, attack: number, defense: number, range: number, movement: number, health: number, max_health: number, direction: string, x_coord: number, y_coord: number, cost: number, player: number) {
+    constructor(type: string, length: number, width: number, attack: number, defense: number, range: number, movement: number, bonus: number[], health: number, max_health: number, direction: string, x_coord: number, y_coord: number, cost: number, player: number) {
         super(type, length, width, movement, health, max_health, direction, x_coord, y_coord)
         this.atk = attack
         this.def = defense
         this.range = range
+        this.bonus = bonus
         this.cost = cost
         this.play = player
     }
@@ -121,6 +123,16 @@ class Ship extends Object {
     // Setter method for the range attribute
     setRange(range: number) {
         this.range = range
+    }
+
+    // Getter method for the bonus attribute
+    getBonus() {
+        return this.bonus
+    }
+
+    // Setter method for the bonus attribute
+    setBonus(bonus: number[]) {
+        this.bonus = bonus
     }
 
     // Getter method for the cost attribute
