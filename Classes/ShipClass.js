@@ -16,6 +16,39 @@ class Ship extends Object {
         this.#play = player
     }
 
+    // Moves the ship to a given location
+    moveShip(point_x, point_y) {
+        // Find distance between ship and destination
+        let dist = this.findDistance(point_x, point_y)
+
+        // Move ship if the ship has adequate speed
+        // TODO Figure out how speed is determined (ship-by-ship basis or number of player actions)
+        if (dist <= speed) {
+            let x_diff = this.getX() - point_x
+            let y_diff = this.getY() - point_y
+
+            if (abs(x_diff) >= abs(y_diff)) {
+                if (x_diff > 0) {
+                    this.setDirection('W')
+                }
+                else {
+                    this.setDirection('E')
+                }
+            }
+            else {
+                if (y_diff > 0) {
+                    this.setDirection('N')
+                }
+                else {
+                    this.setDirection('S')
+                }
+            }
+
+            this.setX(point_x)
+            this.setY(point_y)
+        }
+    }
+
     // Attacks enemy ship
     attackShip(enemy) {
         if (enemy.getPlayer() != this.#play) {
