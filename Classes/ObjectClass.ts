@@ -1,15 +1,15 @@
 class Object {
-    private type: String
-    private len: Number
-    private wid: Number
-    private mvmt: Number
-    private hp: Number
-    private max_hp: Number
-    private dir: String
-    private x: Number
-    private y: Number
+    private type: string
+    private len: number
+    private wid: number
+    private mvmt: number
+    private hp: number
+    private max_hp: number
+    private dir: string
+    private x: number
+    private y: number
 
-    constructor(type: String, length: Number, width: Number, movement: Number, health: Number, max_health: Number, direction: String, x_coord: Number, y_coord: Number) {
+    constructor(type: string, length: number, width: number, movement: number, health: number, max_health: number, direction: string, x_coord: number, y_coord: number) {
         this.type = type
         this.len = length
         this.wid = width
@@ -42,7 +42,7 @@ class Object {
     }
 
     // Setter method for mvmt attribute
-    setMovement(movement: Number) {
+    setMovement(movement: number) {
         this.mvmt = movement
     }
 
@@ -52,7 +52,7 @@ class Object {
     }
 
     // Setter method for hp attribute
-    setHealth(health: Number) {
+    setHealth(health: number) {
         this.hp = health
     }
 
@@ -67,7 +67,7 @@ class Object {
     }
 
     // Setter method for dir attribute
-    setDirection(direction: String) {
+    setDirection(direction: string) {
         this.dir = direction
     }
 
@@ -77,7 +77,7 @@ class Object {
     }
 
     // Setter method for x attribute
-    setX(x_coord: Number) {
+    setX(x_coord: number) {
         this.x = x_coord
     }
 
@@ -87,7 +87,7 @@ class Object {
     }
 
     // Setter method for y attribute
-    setY(y_coord: Number) {
+    setY(y_coord: number) {
         this.y = y_coord
     }
 }
