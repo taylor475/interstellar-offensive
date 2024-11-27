@@ -6,9 +6,11 @@ class Defender extends Ship {
     }
 
     defendShip(ship: Ship) {
+        // Check that target ship is friendly
         if (ship.getPlayer() == this.getPlayer()) {
             const current_bonus: number[] = ship.getBonus()
             let new_bonus: number[] = current_bonus
+            // Increment the defense portion of the target ship's bonus
             new_bonus[1] += 1
 
             ship.setBonus(new_bonus)
