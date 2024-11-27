@@ -1,5 +1,6 @@
 class Object {
     private type: string
+    private img: string
     private len: number
     private wid: number
     private mvmt: number
@@ -9,8 +10,9 @@ class Object {
     private x: number
     private y: number
 
-    constructor(type: string, length: number, width: number, movement: number, health: number, max_health: number, direction: string, x_coord: number, y_coord: number) {
+    constructor(type: string, image: string, length: number, width: number, movement: number, health: number, max_health: number, direction: string, x_coord: number, y_coord: number) {
         this.type = type
+        this.img = image
         this.len = length
         this.wid = width
         this.mvmt = movement

@@ -10,8 +10,8 @@ class Ship extends Object {
     private cost: number
     private play: number
     
-    constructor(type: string, length: number, width: number, attack: number, defense: number, range: number, movement: number, bonus: number[], health: number, max_health: number, direction: string, x_coord: number, y_coord: number, cost: number, player: number) {
-        super(type, length, width, movement, health, max_health, direction, x_coord, y_coord)
+    constructor(type: string, image: string, length: number, width: number, attack: number, defense: number, range: number, movement: number, bonus: number[], health: number, max_health: number, direction: string, x_coord: number, y_coord: number, cost: number, player: number) {
+        super(type, image, length, width, movement, health, max_health, direction, x_coord, y_coord)
         this.atk = attack
         this.def = defense
         this.range = range
