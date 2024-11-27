@@ -76,9 +76,19 @@ class Object {
         return this.#x
     }
 
+    // Setter method for x attribute
+    setX(x_coord) {
+        this.#x = x_coord
+    }
+
     // Getter method for y attribute
     getY() {
         return this.#y
+    }
+
+    // Setter method for y attribute
+    setY(y_coord) {
+        this.#y = y_coord
     }
 }
 
