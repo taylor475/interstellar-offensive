@@ -86,12 +86,55 @@ class Ship extends Object {
 
     // Finds the distance between the ship's location and a given point
     findDistance(pt_x: number, pt_y: number) {
+        // Get the coordinates of the top-left corner of the ship
         const ship_x: number = this.getX()
         const ship_y: number = this.getY()
 
-        const dist_x: number = Math.abs(ship_x - pt_x)
-        const dist_y: number = Math.abs(ship_y - pt_y)
+        // Calculate the coordinates of the bottom-right corner of the ship
+        const ship_dir: string = this.getDirection()
+        let ship_x2: number = ship_x
+        let ship_y2: number = ship_y
+        // Orientation of the ship affects how length and width factor into the bottom-right corner coordinates
+        switch (ship_dir) {
+            case ('N'):
+                ship_x2 += this.getLength() - 1
+                ship_y2 += this.getWidth() - 1
+                break
+            case ('E'):
+                ship_x2 -= this.getWidth() - 1
+                ship_y2 += this.getLength() - 1
+                break
+            case ('S'):
+                ship_x2 -= this.getLength() - 1
+                ship_y2 -= this.getWidth() - 1
+                break
+            case ('W'):
+                ship_x2 += this.getWidth() - 1
+                ship_y2 -= this.getLength() - 1
+                break
+        }
 
+        // Find the closest x-coordinate of the ship to the point
+        let dist_x: number = -475
+        for (let count_x = 0; count_x < Math.abs(ship_x - ship_x2); count_x++) {
+            let calc_dist_x: number = Math.abs(ship_x + count_x - pt_x)
+
+            if (calc_dist_x < dist_x || dist_x == -475) {
+                dist_x = calc_dist_x
+            }
+        }
+
+        // Find the closest y-coordinate of the ship to the point
+        let dist_y: number = -475
+        for (let count_y = 0; count_y < Math.abs(ship_y - ship_y2); count_y++) {
+            let calc_dist_y: number = Math.abs(ship_y + count_y - pt_y)
+
+            if (calc_dist_y < dist_y || dist_y == -475) {
+                dist_y = calc_dist_y
+            }
+        }
+
+        // Calculate the total distance using the closest x- and y-values
         const tot_dist: number = Math.sqrt(dist_x ^ 2 + dist_y ^ 2)
 
         return tot_dist
