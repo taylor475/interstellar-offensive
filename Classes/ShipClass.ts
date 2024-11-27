@@ -18,47 +18,52 @@ class Ship extends Object {
 
     // Moves the ship to a given location
     moveShip(point_x: number, point_y: number) {
-        // Find distance between ship and destination
-        const dist: number = this.findDistance(point_x, point_y)
+        if (this.getHealth() > 0) {
+            // Find distance between ship and destination
+            const dist: number = this.findDistance(point_x, point_y)
 
-        // Move ship if the ship has adequate speed
-        if (dist <= this.getMovement()) {
-            const x_diff: number = this.getX() - point_x
-            const y_diff: number = this.getY() - point_y
+            // Move ship if the ship has adequate speed
+            if (dist <= this.getMovement()) {
+                const x_diff: number = this.getX() - point_x
+                const y_diff: number = this.getY() - point_y
 
-            if (Math.abs(x_diff) >= Math.abs(y_diff)) {
-                if (x_diff > 0) {
-                    this.setDirection('W')
+                if (Math.abs(x_diff) >= Math.abs(y_diff)) {
+                    if (x_diff > 0) {
+                        this.setDirection('W')
+                    }
+                    else {
+                        this.setDirection('E')
+                    }
                 }
                 else {
-                    this.setDirection('E')
+                    if (y_diff > 0) {
+                        this.setDirection('N')
+                    }
+                    else {
+                        this.setDirection('S')
+                    }
                 }
-            }
-            else {
-                if (y_diff > 0) {
-                    this.setDirection('N')
-                }
-                else {
-                    this.setDirection('S')
-                }
-            }
 
-            this.setX(point_x)
-            this.setY(point_y)
+                this.setX(point_x)
+                this.setY(point_y)
+            }
         }
     }
 
     // Attacks enemy ship
     attackShip(enemy: Ship) {
-        if (enemy.getPlayer() != this.play) {
-            // Find distance between ship and enemy
-            const dist: number = this.findDistance(enemy.getX(), enemy.getY())
+        if (this.getHealth() > 0) {
+            // Check that the enemy ship doesn't belong to the attacking player
+            if (enemy.getPlayer() != this.play) {
+                // Find distance between ship and enemy
+                const dist: number = this.findDistance(enemy.getX(), enemy.getY())
 
-            // Begin attack sequence if enemy is in range
-            if (dist <= this.range) {
-                if (this.atk > enemy.getDefense()) {
-                    const damage: number = enemy.getDefense() - this.atk
-                    enemy.takeDamage(damage)
+                // Begin attack sequence if enemy is in range
+                if (dist <= this.range) {
+                    if (this.atk > enemy.getDefense()) {
+                        const damage: number = enemy.getDefense() - this.atk
+                        enemy.takeDamage(damage)
+                    }
                 }
             }
         }
@@ -68,7 +73,11 @@ class Ship extends Object {
         const current_health: number = this.getHealth()
 
         this.setHealth(current_health - damage)
-        // TODO: Add logic for a dead ship
+
+        if (this.getHealth() <= 0) {
+            this.setX(-20)
+            this.setY(-20)
+        }
     }
 
     // Finds the distance between the ship's location and a given point
