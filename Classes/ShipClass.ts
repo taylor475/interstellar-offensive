@@ -4,6 +4,8 @@ class Ship extends Object {
     private atk: number
     private def: number
     private range: number
+    // Bonus refers to additional benefits provided by support ships
+    // It will be an array of four numbers refering to attack, defense, range, and movement (in that order)
     private bonus: number[]
     private cost: number
     private play: number
