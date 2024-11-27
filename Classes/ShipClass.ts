@@ -26,7 +26,7 @@ class Ship extends Object {
             const x_diff: number = this.getX() - point_x
             const y_diff: number = this.getY() - point_y
 
-            if (abs(x_diff) >= abs(y_diff)) {
+            if (Math.abs(x_diff) >= Math.abs(y_diff)) {
                 if (x_diff > 0) {
                     this.setDirection('W')
                 }
