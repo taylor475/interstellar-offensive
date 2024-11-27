@@ -97,7 +97,7 @@ class Ship extends Object {
             for (let count_y = 0; count_y < Math.abs(ship1_y - ship2_y); count_y++) {
                 let calc_dist: number = this.findDistance(ship2_x + count_x, ship2_y + count_y)
 
-                if (calc_dist < tot_dist || tot_dist == -475) {
+                if (calc_dist < tot_dist || tot_dist === -475) {
                     tot_dist = calc_dist
                 }
             }
@@ -141,7 +141,7 @@ class Ship extends Object {
         for (let count_x = 0; count_x < Math.abs(ship_x - ship_x2); count_x++) {
             let calc_dist_x: number = Math.abs(ship_x + count_x - pt_x)
 
-            if (calc_dist_x < dist_x || dist_x == -475) {
+            if (calc_dist_x < dist_x || dist_x === -475) {
                 dist_x = calc_dist_x
             }
         }
@@ -151,7 +151,7 @@ class Ship extends Object {
         for (let count_y = 0; count_y < Math.abs(ship_y - ship_y2); count_y++) {
             let calc_dist_y: number = Math.abs(ship_y + count_y - pt_y)
 
-            if (calc_dist_y < dist_y || dist_y == -475) {
+            if (calc_dist_y < dist_y || dist_y === -475) {
                 dist_y = calc_dist_y
             }
         }
