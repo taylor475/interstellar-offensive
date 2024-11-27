@@ -60,7 +60,7 @@ class Ship extends Object {
             // Check that the enemy ship doesn't belong to the attacking player
             if (enemy.getPlayer() != this.play) {
                 // Find distance between ship and enemy
-                const dist: number = this.findDistance(enemy.getX(), enemy.getY())
+                const dist: number = this.findShipDistance(enemy)
 
                 // Begin attack sequence if enemy is in range
                 if (dist <= this.range) {
@@ -82,6 +82,28 @@ class Ship extends Object {
             this.setX(-20)
             this.setY(-20)
         }
+    }
+
+    // Finds the distance between the ship and another ship
+    findShipDistance(ship: Ship) {
+        const ship1_x: number = this.getX()
+        const ship1_y: number = this.getY()
+        const ship2_x: number = ship.getX()
+        const ship2_y: number = ship.getY()
+
+        // Iterate through every coordinate combination until the smallest distance is found
+        let tot_dist: number = -475
+        for (let count_x = 0; count_x < Math.abs(ship1_x - ship2_x); count_x++) {
+            for (let count_y = 0; count_y < Math.abs(ship1_y - ship2_y); count_y++) {
+                let calc_dist: number = this.findDistance(ship2_x + count_x, ship2_y + count_y)
+
+                if (calc_dist < tot_dist || tot_dist == -475) {
+                    tot_dist = calc_dist
+                }
+            }
+        }
+
+        return tot_dist
     }
 
     // Finds the distance between the ship's location and a given point

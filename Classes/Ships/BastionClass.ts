@@ -14,7 +14,7 @@ class Bastion extends Ship {
             new_bonus[1] += 1
 
             // Check if the target ship is adjacent
-            const dist: number = this.findDistance(ship.getX(), ship.getY())
+            const dist: number = this.findShipDistance(ship)
             if (dist <= 1) {
                 // Increment the defense portion of the target ship's bonus further
                 new_bonus[1] += 1
