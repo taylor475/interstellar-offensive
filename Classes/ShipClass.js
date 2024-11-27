@@ -18,15 +18,16 @@ class Ship extends Object {
 
     // Attacks enemy ship
     attackShip(enemy) {
-        // TODO: Add check to make sure the other ship is an enemy ship and not your own
-        // Find distance between ship and enemy
-        let dist = this.findDistance(enemy.getX(), enemy.getY())
+        if (enemy.getPlayer() != this.#play) {
+            // Find distance between ship and enemy
+            let dist = this.findDistance(enemy.getX(), enemy.getY())
 
-        // Begin attack sequence if enemy is in range
-        if (dist <= this.range) {
-            if (this.#atk > enemy.getDefense()) {
-                let damage = enemy.getDefense() - this.#atk
-                enemy.takeDamage(damage)
+            // Begin attack sequence if enemy is in range
+            if (dist <= this.range) {
+                if (this.#atk > enemy.getDefense()) {
+                    let damage = enemy.getDefense() - this.#atk
+                    enemy.takeDamage(damage)
+                }
             }
         }
     }
