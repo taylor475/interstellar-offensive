@@ -23,7 +23,7 @@ class Object {
 
     // Getter method for type attribute
     getType() {
-        return this.type
+        return this.#type
     }
 
     // Getter method for len attribute
