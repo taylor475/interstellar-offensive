@@ -10,14 +10,35 @@ class GameMaster {
     private ships: Ship[]
     private objects: Object[]
     private map: MapCoord[]
+    private max_energy: number
 
-    constructor(turn: number, round: number, player_list: Player[], ship_list: Ship[], object_list: Object[], coord_list: MapCoord[]) {
+    constructor(turn: number, round: number, player_list: Player[], ship_list: Ship[], object_list: Object[], coord_list: MapCoord[], max_energy: number) {
         this.current_turn = turn
         this.round = round
         this.players = player_list
         this.ships = ship_list
         this.objects = object_list
         this.map = coord_list
+        this.max_energy = max_energy
+    }
+
+    // Handles actions to advance to the next round
+    advanceRound() {
+        // Refresh each player's energy
+        for (let p = 0; p < this.players.length; p++) {
+            const player = this.players[p];
+            player.setEnergy(this.max_energy)
+        }
+
+        // Remove bonuses from all ships
+        for (let s = 0; s < this.ships.length; s++) {
+            const ship = this.ships[s];
+            ship.setBonus([0, 0, 0, 0])
+        }
+
+        // TODO: Add movement of non-player controlled objects
+
+        this.round++
     }
 
     // Getter method for current_turn attribute
@@ -73,6 +94,11 @@ class GameMaster {
     // Getter method for map attribute
     getMap() {
         return this.map
+    }
+
+    // Getter method for max_energy attribute
+    getMaxEnergy() {
+        return this.max_energy
     }
 }
 
