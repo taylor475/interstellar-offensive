@@ -44,7 +44,7 @@ class Player {
     }
 
     // Setter method for energy attribute
-    setEnergy(num_actions) {
+    setEnergy(num_actions: number) {
         this.energy = num_actions
     }
 }
